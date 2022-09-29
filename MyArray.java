@@ -1,19 +1,9 @@
-public class Main {
-    public static void main(String[] args) {
-        MyArray myArray = new MyArray();
-        myArray.add(1,2,3,4,5);
-        int[] arr = {0,0,0};
-        myArray.add(arr);
-        myArray.show();
-    }
-}
-
-class MyArray {
-    private int[] arr;
+public class MyArray {
+    private Object[] arr;
 
     //初始化n长度数组 默认值0
     public MyArray() {
-        this.arr = new int[0];
+        this.arr = new Object[0];
     }
 
     //遍历数组
@@ -29,22 +19,22 @@ class MyArray {
     }
 
     //添加数据
-    void add(int num){
-        int[] newArr = new int[this.arr.length+1];
+    void add(Object obj){
+        Object[] newArr = new Object[this.arr.length+1];
         for (int i = 0; i < this.arr.length; i++) {
             newArr[i] = this.arr[i];
         }
-        newArr[newArr.length-1] = num;
+        newArr[newArr.length-1] = obj;
         this.arr = newArr;
     }
-    void add(int...num){
-        int len = num.length;
-        int[] newArr = new int[this.arr.length+len];
+    void add(Object...obj){
+        int len = obj.length;
+        Object[] newArr = new Object[this.arr.length+len];
         for (int i = 0; i < this.arr.length; i++) {
             newArr[i] = this.arr[i];
         }
         int i = this.arr.length;
-        for(int n:num){
+        for(Object n:obj){
             newArr[i] = n;
             i++;
         }
@@ -53,7 +43,7 @@ class MyArray {
 
     //删除末尾数据
     void move(){
-        int[] newArr = new int[this.arr.length-1];
+        Object[] newArr = new Object[this.arr.length-1];
         for (int i = 0; i < this.arr.length-1; i++) {
             newArr[i] = this.arr[i];
         }
@@ -63,7 +53,7 @@ class MyArray {
     //删除指定下标的数据
     void delIndex(int index){
         if (index >=0 && index<=this.arr.length){
-            int[] newArr = new int[this.arr.length-1];
+            Object[] newArr = new Object[this.arr.length-1];
             for (int i = 0; i < index; i++) {
                 newArr[i] = this.arr[i];
             }
@@ -77,8 +67,8 @@ class MyArray {
     }
 
     //修改指定数据
-    void alterIndex(int index,int num){
-        this.arr[index] = num;
+    void alterIndex(int index,Object obj){
+        this.arr[index] = obj;
     }
 
 }
